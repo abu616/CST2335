@@ -12,32 +12,11 @@ import java.util.Set;
 
 public class LoginActivity extends Activity {
 
-    /*
-
     protected static final String ACTIVITY_NAME = "LoginActivity";
-
-    SharedPreferences prefs;
-    Button loginButton;
-    EditText emailLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        setContentView(R.layout.activity_login);
-        Log.i(ACTIVITY_NAME, "In onCreate()");
-
-        // SP obj for reading and writing
-        prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
-        emailLogin.setText(prefs.getString("defaultEmail", "email@domain.com"));
-
-        // editor obj
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putString("defaultEmail", "");
-        edit.apply();
-
-
     }
 
    @Override
@@ -69,7 +48,5 @@ public class LoginActivity extends Activity {
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
     }
-    */
-
 }
 
