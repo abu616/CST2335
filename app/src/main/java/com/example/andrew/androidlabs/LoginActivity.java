@@ -2,45 +2,55 @@ package com.example.andrew.androidlabs;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
+import android.widget.EditText;
 
 public class LoginActivity extends Activity {
 
-    Button login_button;
+    Button button;
     SharedPreferences prefs;
-    TextView login_email;
+    EditText email, password;
 
     protected static final String ACTIVITY_NAME = "LoginActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstance) {
-        super.onCreate(savedInstance);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         //Error Msg
         Log.i(ACTIVITY_NAME, "in onCreate()");
 
+        email=findViewById(R.id.login_email);
+        password=findViewById(R.id.login_password);
 
-        prefs = getApplicationContext().getSharedPreferences("user_preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = prefs.edit();
+        // Button ref from XML
+        button=findViewById(R.id.login_button);
 
-        //Read default email
-        prefs.getString("default_email", "email@domain.com");
-        //login_email.setText(prefs.getString("default_email", "email@domain.com"));
+        //SharedPref and edit obj
+        prefs = getSharedPreferences("user_preferences", Context.MODE_PRIVATE);
+        email.setText(prefs.getString("default_email", "email123@domain.com"));
 
-        // write default email
-        //edit.putString("default_email", );
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String e = email.getText().toString();
+                String p = password.getText().toString();
 
-        //login_button = ;
+                SharedPreferences.Editor edit = prefs.edit();
 
+                edit.putString("default_email", e);
+                edit.commit();
 
-        // commit
-        edit.commit();
+                Intent intent = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
    @Override
