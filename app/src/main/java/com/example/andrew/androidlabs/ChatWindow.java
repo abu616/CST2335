@@ -11,10 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
+
+    protected static final String ACTIVITY_NAME="ChatWindow";
 
     ListView myList;
     EditText inputText;
@@ -28,9 +29,9 @@ public class ChatWindow extends Activity {
         chatMessages = new ArrayList<>();
 
         // initialize variables
-        myList.findViewById(R.id.myList);
-        inputText.findViewById(R.id.inputText);
-        sendButton.findViewById(R.id.sendButton);
+        myList=findViewById(R.id.myList);
+        inputText=findViewById(R.id.inputText);
+        sendButton=findViewById(R.id.sendButton);
 
         final ChatAdapter messageAdapter = new ChatAdapter( this);
         myList.setAdapter(messageAdapter);
@@ -67,7 +68,7 @@ public class ChatWindow extends Activity {
             else
                 result = inflater.inflate(R.layout.chat_row_outgoing, null);
 
-            TextView message = (TextView)result.findViewById(R.id.message_text);
+            TextView message = result.findViewById(R.id.message_text);
             message.setText( getItem(position) );
             return result;
         }
