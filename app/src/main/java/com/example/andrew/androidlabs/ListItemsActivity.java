@@ -1,6 +1,8 @@
 package com.example.andrew.androidlabs;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.graphics.Bitmap;
+import android.widget.Toast;
+
 
 public class ListItemsActivity extends Activity {
 
@@ -50,9 +54,39 @@ public class ListItemsActivity extends Activity {
             @Override
             public void onClick(View v) { dispatchTakePictureIntent();}
         });
-        //switchButton.findViewById(R.id.switch_button);
-        //radioButton.findViewById(R.id.radio_button);
-        //checkBox.findViewById(R.id.checkbox);
+
+        switchButton=findViewById(R.id.switch_button);
+        switchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                toasty();
+            }
+        });
+
+        checkBox=findViewById(R.id.checkbox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
+                builder.setMessage(R.string.DialogMessage)
+                        .setTitle(R.string.Confirm)
+                        .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent resultIntent = new Intent();
+                                // Change value to a string.xml file
+                                resultIntent.putExtra("Response", "@string/share");
+                                setResult(Activity.RESULT_OK, resultIntent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        })
+                        .show();
+            }
+        });
+
     }
 
     @Override
@@ -83,5 +117,21 @@ public class ListItemsActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
+
+    protected void toasty(){
+        if (switchButton.isChecked()) {
+            CharSequence text = "Switch is On";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(this , text, duration);
+            toast.show();
+        } else {
+            CharSequence text = "Switch is off";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this , text, duration);
+            toast.show();
+        }
+
+
     }
 }
