@@ -8,10 +8,12 @@
     <string name="Password">Mot de passe</string>
     <string name="DialogMessage">Terminer l\'activité?</string>
     <string name="Confirm">Confirmer?</string>
-    <string name="OK">D\'accord?</string>
+    <string name="OK">D\'accord</string>
     <string name="Cancel">Annuler?</string>
     <string name="RadioButton">Bouton radio</string>
     <string name="CheckBox">Case à cocher</string>
     <string name="Switch"> Qu\'est-ce que cela fait?</string>
     <string name="share"> Mon information partager</string>
+    <string name="chat_button">Commencer le chat</string>
+    <string name="send_button">Envoyer</string>
 </resources>

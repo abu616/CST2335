@@ -14,4 +14,6 @@
     <string name="CheckBox">Check Box</string>
     <string name="Switch"> What does this do?</string>
     <string name="share"> My information to share</string>
+    <string name="chat_button">Start Chat</string>
+    <string name="send_button">Send</string>
 </resources>
