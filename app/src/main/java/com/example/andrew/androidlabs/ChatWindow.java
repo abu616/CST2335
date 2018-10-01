@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
 
-    protected static final String ACTIVITY_NAME="ChatWindow";
+    //protected static final String ACTIVITY_NAME="ChatWindow";
 
     ListView myList;
     EditText inputText;
