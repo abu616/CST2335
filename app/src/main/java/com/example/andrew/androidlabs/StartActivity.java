@@ -45,15 +45,12 @@ public class StartActivity extends Activity {
         // Chat Button
         button=findViewById(R.id.chatButton);
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View W) {
+            public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, ChatWindow.class);
-                startActivityForResult(intent, 50);
+                startActivityForResult(intent, 0);
                 Log.i(ACTIVITY_NAME, "User clicked Start Chat");
-                // Start a new chat activity
-
             }
         });
-
    }
     @Override
     protected void onResume() {

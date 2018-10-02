@@ -40,14 +40,14 @@ public class ChatWindow extends Activity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-            chatMessages.add(inputText.toString());
-            messageAdapter.notifyDataSetChanged();
-            inputText.setText("");
+                chatMessages.add(inputText.getText().toString());
+                messageAdapter.notifyDataSetChanged();
+                inputText.setText("");
             }
         });
     }
 
-    class ChatAdapter extends ArrayAdapter<String>{
+    private class ChatAdapter extends ArrayAdapter<String>{
         public ChatAdapter(Context ctx) {super(ctx, 0);}
 
         public int getCount(){
@@ -63,17 +63,17 @@ public class ChatWindow extends Activity {
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
 
             View result = null;
-            if (position%2 ==0)
+            if (position%2 == 0)
                 result = inflater.inflate(R.layout.chat_row_incoming, null);
             else
                 result = inflater.inflate(R.layout.chat_row_outgoing, null);
 
-            TextView message = result.findViewById(R.id.message_text);
+            TextView message = (TextView)result.findViewById(R.id.message_text);
             message.setText( getItem(position) );
             return result;
         }
 
-        public long getItemID(int position){
+        public long getID(int position){
             return position;
         }
     }
